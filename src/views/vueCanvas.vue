@@ -1,7 +1,8 @@
 <template>
   <div>
+    <h1>canvas </h1>
     <b-row class="text-center">
-      <b-col>1 of 3</b-col>
+      <b-col></b-col>
       <b-col cols="8">
         <canvas
           id="myCanvas"
