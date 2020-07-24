@@ -3,6 +3,8 @@
     <div>
       <b-button-group>
         <b-button @click="startProgress('bfs')">BFS</b-button>
+        <b-button @click="startProgress('dfs')">DFS</b-button>
+        <b-button @click="gridReset()">clear</b-button>
       </b-button-group>
       <b-nav pills>
         <b-nav-item
@@ -45,6 +47,11 @@ export default {
         this.gridArray[i] = new Array(80).fill('grid');
       }
     },
+    gridReset() {
+      if (this.tempGrid.length) {
+        this.gridArray = _.cloneDeep(this.tempGrid);
+      }
+    },
     changeSelected(selected) {
       this.selected = selected;
     },
@@ -80,6 +87,42 @@ export default {
     endDraw() {
       this.chosing = false;
     },
+    startDFS() {
+      this.tempGrid = _.cloneDeep(this.gridArray);
+      const s = [this.start];
+      const vm = this;
+
+      function bfscall() {
+        if (s) {
+          const cur = s.pop();
+
+          // console.log(cur);
+          if (vm.gridArray[cur.x][cur.y] !== 'start') {
+            vm.setArray(cur.x, cur.y, 'visited');
+          }
+
+          const dir = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+
+          for (let i = 0; i < dir.length; i += 1) {
+            const tmpX = cur.x + dir[i][0];
+            const tmpY = cur.y + dir[i][1];
+
+            if (_.inRange(tmpX, 30) && _.inRange(tmpY, 80)) {
+              if (vm.gridArray[tmpX][tmpY] === 'grid') {
+                vm.setArray(tmpX, tmpY, 'inqueue');
+                s.push({ x: tmpX, y: tmpY });
+              } else if (vm.gridArray[tmpX][tmpY] === 'end') {
+                console.log('find');
+                clearInterval(vm.bfsInterval);
+                vm.stopProgress();
+              }
+            }
+          }
+        }
+      }
+
+      this.bfsInterval = setInterval(bfscall, 20);
+    },
     startBFS() {
       this.tempGrid = _.cloneDeep(this.gridArray);
       const s = [this.start];
@@ -100,7 +143,7 @@ export default {
             const tmpX = cur.x + dir[i][0];
             const tmpY = cur.y + dir[i][1];
 
-            if (_.inRange(tmpX, 29) && _.inRange(tmpY, 79)) {
+            if (_.inRange(tmpX, 30) && _.inRange(tmpY, 80)) {
               if (vm.gridArray[tmpX][tmpY] === 'grid') {
                 vm.setArray(tmpX, tmpY, 'inqueue');
                 s.push({ x: tmpX, y: tmpY });
@@ -118,9 +161,15 @@ export default {
     },
     startProgress(whichWay) {
       this.isProgress = true;
+      if (this.tempGrid.length) {
+        this.gridArray = _.cloneDeep(this.tempGrid);
+      }
       switch (whichWay) {
         case 'bfs':
           this.startBFS();
+          break;
+        case 'dfs':
+          this.startDFS();
           break;
         default:
           break;
@@ -156,8 +205,10 @@ export default {
   width: 1rem;
   height: 1rem;
   border: 1px solid #ccc;
+  transition: 0.3s;
   &:hover {
     border: 1px solid #333;
+     box-shadow: 0 3px 15px 3px rgba(51, 51, 51, 0.5);
   }
 }
 .grid {
