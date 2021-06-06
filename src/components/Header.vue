@@ -1,16 +1,53 @@
 <template>
-  <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand to="/">Web tech lab</b-navbar-brand>
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-          <b-nav-item to="/">Home</b-nav-item>
-          <b-nav-item to="/canvas">Canvas</b-nav-item>
-          <b-nav-item to="/graph">Graph</b-nav-item>
-          <b-nav-item to="/about">About Me</b-nav-item>
-
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
+  <div :class="{header: true, black: scrolled}">
+    <div class="title">
+      Web Tech Lab
+    </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      scrolled: false,
+    };
+  },
+  created() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      this.scrolled = window.scrollY > 50;
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@import "../style/colorSet.scss";
+
+.header {
+  width: 100%;
+  height: 50px;
+  background-color:rgba(0,0,0, 0.7);
+  position: fixed;
+  z-index: 3;
+  transition:all  ease 1s;
+  .title {
+    position: absolute;
+    left: 0;
+    height: 50px;
+    color: #ffffff;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding: 0px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+.black{
+  background-color: $colorSet6;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    Home
+    projects with card view
   </div>
 </template>
 
@@ -11,7 +11,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  div{
-    background-color: black;
-  }
+
 </style>

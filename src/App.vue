@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header/>
     <router-view />
   </div>
 </template>
@@ -18,19 +18,17 @@ export default {
 <style lang="scss">
 @import "./style/main.scss";
 
-
-$colorSet1: #2d3142;
-$colorSet2: #bfc0c0;
-$colorSet3: #ffffff;
-$colorSet4: #ef8354;
-$colorSet5: #4f5d75;
-
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: monospace, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  width: 100vw;
+  position:relative;
+  width: 100%;
   height: 100vh;
 }
+// .header{
+//   display: block;
+//   height:40px;
+// }
 </style>
