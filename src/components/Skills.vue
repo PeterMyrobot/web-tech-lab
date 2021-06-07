@@ -1,6 +1,6 @@
 <template>
   <div class="skillDiv">
-    <h2 class="title">Skill Set</h2>
+    <p class="header">MY SKILLS</p>
     <div class="skills">
       <div class="skillContainer" v-for="skill in skills" :key="skill.name">
         <img :src="skill.icon" alt="" />
@@ -12,6 +12,9 @@
         </div>
       </div>
     </div>
+    <p class="description">
+      dlncldscnldscnlsdcmsdcmdm dmlcdlsc dlscscmscmdslcmsdcdcdscd
+    </p>
   </div>
 </template>
 
@@ -51,24 +54,30 @@ export default {
 .skillDiv {
   // background-color: $colorSet3;
   margin: 50px;
-  .title {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  .header {
     color: $colorSet3;
-    text-align: left;
-    position: relative;
+    text-align: right;
+    padding-top: 10px;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-family: "Roboto", sans-serif;
     &:after {
       content: "";
-      height: 1px;
-      width: 100%;
-      border-bottom: 3px solid $colorSet3;
+      height: 70%;
       position: absolute;
-      bottom: 0;
+      border-left: 3px solid $colorSet3;
       left: 0;
+      bottom: 0;
     }
   }
+
   .skills {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    // padding: 20px;
     justify-content: space-around;
 
     .skillContainer {

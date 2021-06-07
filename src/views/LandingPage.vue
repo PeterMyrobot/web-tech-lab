@@ -3,7 +3,7 @@
     <StarTravel class="background" />
     <div class="scrollPart">
       <div class="blank"></div>
-      <About />
+      <About @intersect="aboutIntersect"/>
       <Skills />
       <Projects />
       <Experience />
@@ -40,6 +40,9 @@ export default {
     };
   },
   methods: {
+    aboutIntersect() {
+      console.log('heewbdcdblds');
+    },
   },
 };
 </script>
@@ -66,6 +69,8 @@ export default {
   position: absolute;
   z-index: 1;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 </style>

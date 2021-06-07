@@ -17,6 +17,7 @@ export default {
 
 <style lang="scss">
 @import "./style/main.scss";
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
 #app {
   font-family: monospace, Helvetica, Arial, sans-serif;

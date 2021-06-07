@@ -1,6 +1,5 @@
 <template>
   <div class="aboutDiv">
-    <h2 class="header">About Me</h2>
     <div class="content">
       <div class="info">
         <div>
@@ -10,56 +9,55 @@
           <p>Location: Taiwan</p>
         </div>
       </div>
+      <p class="header">ABOUT ME</p>
       <!-- <div class="photoArea">
         <div class="imgContainer">
           <img :src="require('@/assets/me.jpg')" alt="photo" />
         </div>
       </div> -->
       <div class="descriptionContainer">
+        <div :class="{ boxContainer: true, expend: desIn }"></div>
         <p>{{ descreption }}</p>
       </div>
     </div>
-    <!-- <div class="boxContainer">
-      <div class="box"></div>
-    </div> -->
   </div>
 </template>
 
 <script>
 export default {
+  mounted() {
+    const options = this.options || {};
+    this.observer = new IntersectionObserver(([entry]) => {
+      console.log(entry.isIntersecting);
+      if (entry) {
+        this.desIn = entry.isIntersecting;
+      }
+    }, options);
+
+    this.observer.observe(this.$el);
+  },
   data() {
     return {
       descreption:
         'I am a driven individual with experience in developing software related to mechanical/electrical products. Dedicated to javascript with 4 years experience in which I have acquired a wide range of technical skills ranging from the latest JavaScript frameworks to software architecture and am looking to increase my skill and knowledge in this area.',
+      observer: null,
+      options: {
+        rootMargin: '0px',
+        threshold: 1,
+      },
+      desIn: false,
     };
   },
-  methods: {
-    handelScroll(e) {
-      console.log(e);
-    },
-  },
+  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../style/colorSet.scss";
 .aboutDiv {
-
   margin: 50px;
-  .header {
-    color: $colorSet3;
-    text-align: left;
-    position: relative;
-    &:after {
-      content: "";
-      height: 1px;
-      width: 100%;
-      border-bottom: 3px solid $colorSet3;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-  }
+  position: relative;
+
   .content {
     display: flex;
     flex-direction: row;
@@ -86,16 +84,44 @@ export default {
         font-weight: bold;
       }
     }
+    .header {
+      color: $colorSet3;
+      text-align: right;
+      padding-top: 10px;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      font-family: "Roboto", sans-serif;
+      &:after {
+        content: "";
+        height: 70%;
+        position: absolute;
+        border-left: 3px solid $colorSet3;
+        left: 0;
+        bottom: 0;
+      }
+    }
     .descriptionContainer {
-      // border-top: 1px solid $colorSet5;
+      // background-color: #000000;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 25px 20px 25px;
-      color: #ffffff;
+      padding: 20px;
+      position: relative;
+      .boxContainer {
+        left: 0;
+        height: 100%;
+        width: 0%;
+        background-color: #000000;
+        position: absolute;
+        transition: all 0.8s ease;
+      }
+      .expend {
+        width: 100%;
+      }
       p {
         text-align: initial;
         color: $colorSet5;
+        z-index: 1;
       }
     }
   }

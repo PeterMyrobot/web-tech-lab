@@ -6,7 +6,7 @@
       <span>A Software developer base in Taiwan</span>
       <div class="linkArea"></div>
     </div>
-    <div class="bottom">
+    <div class="bottom" v-show="scrolled">
       <img src="@/assets/icons/down-arrow.svg" alt="" />
     </div>
   </div>
@@ -39,10 +39,8 @@ export default {
       stars: [],
       flySpeed: 0.02,
 
+      scrolled: true,
       scrollStyle: {
-        titleContainer: {
-
-        },
         title: {
           transform: 'scale(1)',
           // opacity: 1,
@@ -54,17 +52,16 @@ export default {
   },
   methods: {
     handleScroll() {
-      // const { scrollY } = window;
-      // th
-      // this.$refs.first.value.style.opacity = (100 - ((scrollY + window.innerHeight)
-      // - this.$refs.first.value.offsetHeight)) / 100;
-      // console.log('gere');
-      // console.log(this.$refs.first.$el.style.opacity);
-      // console.log(window.scrollY);
-      if (window.scrollY < 300) {
-        this.scrollStyle.title.transform = `scale(${1 + window.scrollY / 100})`;
+      if (window.scrollY > 0) {
+        this.scrolled = false;
+      } else {
+        this.scrolled = true;
       }
-      this.scrollStyle.title.opacity = 1 - window.scrollY / 200;
+      if (window.scrollY < 300) {
+        const dy = window.scrollY / 100;
+        this.scrollStyle.title.transform = `scale(${(1 + dy ** 2)})`;
+        this.scrollStyle.title.opacity = 1 - dy / 2;
+      }
     },
     handleResize() {
       // Calculate new canvas size based on window
