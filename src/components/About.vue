@@ -2,12 +2,12 @@
   <div class="aboutDiv">
     <div class="content">
       <div class="info">
-        <div>
+        <!-- <div>
           <p>Name: Peter Yang</p>
           <p>Email: weiyang2016@gmail.com</p>
           <p>Date of Birth: 1989/03/12</p>
           <p>Location: Taiwan</p>
-        </div>
+        </div> -->
       </div>
       <p class="header">ABOUT ME</p>
       <!-- <div class="photoArea">
@@ -120,8 +120,10 @@ export default {
       }
       p {
         text-align: initial;
-        color: $colorSet5;
+        color: #f4e9cd;
         z-index: 1;
+        font-family: "Roboto";
+        font-size: 2rem;
       }
     }
   }

@@ -2,20 +2,21 @@
   <div class="skillDiv">
     <p class="header">MY SKILLS</p>
     <div class="skills">
-      <div class="skillContainer" v-for="skill in skills" :key="skill.name">
+      <div class="skillIcon" v-for="skill in skills" :key="skill.name">
         <img :src="skill.icon" alt="" />
-        <span>
+        <!-- <span>
           {{ skill.name }}
-        </span>
-        <div class="levelBar">
+        </span> -->
+        <!-- <div class="levelBar">
           <div class="level" :style="{ width: computeLevel(skill.level) }"></div>
         </div>
-        <div class="levelText"> {{skill.levelText}}</div>
+        <div class="levelText"> {{skill.levelText}}</div> -->
       </div>
     </div>
-    <!-- <p class="description">
-      dlncldscnldscnlsdcmsdcmdm dmlcdlsc dlscscmscmdslcmsdcdcdscd
-    </p> -->
+    <p class="description">
+      For years I have been using those skills to build varies project from interactive device to
+      website, and keep learning new technology when I need it for new project
+    </p>
   </div>
 </template>
 
@@ -34,22 +35,58 @@ export default {
     return {
       skills: [
         {
-          name: 'Vue.js', icon: vueIcon, level: 9, levelText: 'fluent',
+          name: 'Vue.js',
+          icon: vueIcon,
+          level: 9,
+          levelText: 'fluent',
         },
         {
-          name: 'React', icon: reactIcon, level: 8, levelText: 'expert',
+          name: 'React',
+          icon: reactIcon,
+          level: 8,
+          levelText: 'expert',
         },
         {
-          name: 'Electron', icon: electron, level: 7, levelText: 'learned',
+          name: 'Electron',
+          icon: electron,
+          level: 7,
+          levelText: 'learned',
         },
         {
-          name: 'Python', icon: pythonIcon, level: 9, levelText: 'expert',
+          name: 'Python',
+          icon: pythonIcon,
+          level: 9,
+          levelText: 'expert',
         },
         {
-          name: 'git', icon: gitIcon, level: 8, levelText: 'expert',
+          name: 'git',
+          icon: gitIcon,
+          level: 8,
+          levelText: 'expert',
         },
         {
-          name: 'Raspi', icon: raspiIcon, level: 6, levelText: 'Proficient',
+          name: 'Raspi',
+          icon: raspiIcon,
+          level: 6,
+          levelText: 'Proficient',
+        },
+        {
+          name: 'Python2',
+          icon: pythonIcon,
+          level: 9,
+          levelText: 'expert',
+        },
+        {
+          name: 'git2',
+          icon: gitIcon,
+          level: 8,
+          levelText: 'expert',
+        },
+        {
+          name: 'Raspi2',
+          icon: raspiIcon,
+          level: 6,
+          levelText: 'Proficient',
         },
       ],
     };
@@ -89,11 +126,25 @@ export default {
 
   .skills {
     display: flex;
-    flex-direction: column;
-    // padding: 20px;
-    justify-content: space-around;
-    min-width: 500px;
+    max-width: 350px;
+    height:fit-content;
     margin-left: 20px;
+    flex-wrap: wrap;
+
+    .skillIcon {
+      margin: 0px 10px 5px 0px;
+      width: 60px;
+      height: 60px;
+      background-color: #000000;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 70%;
+        width: 70%;
+      }
+    }
 
     .skillContainer {
       // border-radius: 2px;
@@ -134,18 +185,25 @@ export default {
           height: 10px;
         }
       }
-      .levelText{
+      .levelText {
         margin-left: 25px;
         color: $colorSet5;
-        width:100px;
-        border:1px solid $colorSet5;
-        border-radius:2px;
+        width: 120px;
+
+        border-left: 1px solid $colorSet5;
+        border-right: 1px solid $colorSet5;
+        border-radius: 2px;
+        padding: 0px 10px;
       }
     }
   }
   .description {
-    border: 1px solid #ffffff;
+    margin-left: 30px;
+    text-align: left;
+    max-width: 400px;
     color: #ffffff;
+    font-size: 2rem;
+    font-family: 'Roboto';
   }
 }
 </style>

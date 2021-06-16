@@ -1,7 +1,7 @@
 <template>
   <div :class="{header: true, black: scrolled}">
     <div class="title">
-      Web Tech Lab
+      WEB TECH LAB
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
 .header {
   width: 100%;
   height: 50px;
-  background-color:rgba(0,0,0, 0.7);
+  background-color:rgba(0,0,0, 0);
   position: fixed;
   z-index: 3;
   transition:all  ease 1s;
@@ -45,9 +45,10 @@ export default {
     padding: 0px 20px;
     font-size: 1.5rem;
     font-weight: bold;
+    font-family: "Roboto";
   }
 }
 .black{
-  background-color: $colorSet6;
+  background-color: $colorSet7;
 }
 </style>

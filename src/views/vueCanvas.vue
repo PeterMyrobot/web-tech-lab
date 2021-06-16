@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>canvas </h1>
+  <div class="projectRoot">
+    <h1>Mirror Drawer </h1>
     <b-row class="text-center">
       <b-col></b-col>
       <b-col cols="8">
@@ -183,3 +183,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  .projectRoot{
+    padding-top:50px;
+  }
+</style>

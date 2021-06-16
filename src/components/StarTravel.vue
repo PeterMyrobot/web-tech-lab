@@ -17,6 +17,7 @@ export default {
   mounted() {
     window.addEventListener('resize', this.handleResize);
     window.addEventListener('scroll', this.handleScroll);
+    this.handleScroll();
     this.handleResize();
     this.makeStar(200);
     requestAnimationFrame(this.init);
@@ -57,11 +58,11 @@ export default {
       } else {
         this.scrolled = true;
       }
-      if (window.scrollY < 300) {
-        const dy = window.scrollY / 100;
-        this.scrollStyle.title.transform = `scale(${(1 + dy ** 2)})`;
-        this.scrollStyle.title.opacity = 1 - dy / 2;
-      }
+      // if (window.scrollY < 300) {
+      const dy = window.scrollY / 100;
+      this.scrollStyle.title.transform = `scale(${(1 + dy ** 2)})`;
+      this.scrollStyle.title.opacity = 1 - dy / 2;
+      // }
     },
     handleResize() {
       // Calculate new canvas size based on window

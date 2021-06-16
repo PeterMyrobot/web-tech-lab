@@ -3,10 +3,10 @@
     <StarTravel class="background" />
     <div class="scrollPart">
       <div class="blank"></div>
-      <About @intersect="aboutIntersect"/>
+      <About/>
       <Skills />
+      <!-- <Experience /> -->
       <Projects />
-      <Experience />
     </div>
     <!-- <div class="fadein"></div>
     cv footer -->
@@ -20,7 +20,7 @@ import StarTravel from '@/components/StarTravel.vue';
 import About from '@/components/About.vue';
 import Skills from '@/components/Skills.vue';
 import Projects from '@/components/Projects.vue';
-import Experience from '@/components/Experience.vue';
+// import Experience from '@/components/Experience.vue';
 
 export default {
   name: 'LandingPage',
@@ -33,16 +33,13 @@ export default {
     About,
     Skills,
     Projects,
-    Experience,
+    // Experience,
   },
   data() {
     return {
     };
   },
   methods: {
-    aboutIntersect() {
-      console.log('heewbdcdblds');
-    },
   },
 };
 </script>
